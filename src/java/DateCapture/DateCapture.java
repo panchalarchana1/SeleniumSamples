@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 /*Author : Archana Panchal 
  * This is a simple sample programme to test Date picker Functionality
- * As Now a days we have many sites with Date pipcker widget - its very 
+ * Now a days we have many sites with Date pipcker widget - its very 
  * hard to select particular date ( future and past both )using selenium 
  * web-driver. 
  * So I have just wrote a programe to put/fill the date field with date
@@ -54,16 +54,16 @@ public class DateCapture {
 	
   public static void main(String[] args) throws Exception {
 		try {
-			// 
-			System.setProperty("webdriver.chrome.driver","C:\\TAE\\SeatMap\\src\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver","C:\\src\\chromedriver.exe");// path of webdriver..
 			WebDriver webDriver = new ChromeDriver();
-			DateCapture cc = new DateCapture();		
-		  webDriver.get("http://spicejet.com/");				
-			String date= "20/06";	
-			WebElement we = webDriver.findElement(By.xpath("//*[@id='ctl00_mainContent_view_date1']"));							
-			cc.pickDate(we,date,webDriver,"//*[@id='ctl00_mainContent_view_date1']");
-			Thread.sleep(3000);
-			//we.sendKeys(Keys.TAB);	
+			DateCapture dc = new DateCapture();		
+		        webDriver.get("http://spicejet.com/");	// Site address which needs to be tested using selenium			
+			String date= "20/06";	// Date to be placed in Date picker text field 
+			String xPath = "//*[@id='ctl00_mainContent_view_date1']";
+			WebElement we = webDriver.findElement(By.xpath("//*[@id='ctl00_mainContent_view_date1']")); //find element using xpath of the Date input field							
+			dc.pickDate(we,date,webDriver, xPath); // calling pickDate Function 
+			Thread.sleep(3000); // wait for site to load completely...
+			
 		}
 		catch(Exception e ){
 			System.out.println("Something Went Wrong : -" + e.getMessage());
